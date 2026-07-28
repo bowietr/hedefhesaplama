@@ -22,3 +22,9 @@ GitHub Pages:
 - iPhone 13 ve dar ekranlarda yatay taşma kaldırıldı.
 - Kartlar tek sütuna alındı.
 - Hedef seviyeleri tablosu mobil kart görünümüne çevrildi.
+
+## V8 Prim güncellemesi
+- Pozisyon seçimi eklendi.
+- Mağaza %80 prim koşulu eklendi.
+- Aktif çarpan ve tahmini prim hesaplaması eklendi.
+- Hedef seviyelerinde prim karşılıkları gösterildi.

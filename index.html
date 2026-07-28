@@ -64,6 +64,20 @@ tr:last-child td{border-bottom:0}
 @media(max-width:800px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.kpi:last-child{grid-column:1/-1}.details{grid-template-columns:1fr}}
 @media(max-width:520px){.wrap{padding:10px}.hero{padding:20px 17px}.hero h1{font-size:26px}.card{padding:15px}.row2{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}.kpi:last-child{grid-column:auto}.meta{display:block}.meta span{display:block;margin-top:4px}}
 
+
+select{width:100%;height:48px;border:1px solid #d1d5db;border-radius:12px;padding:0 13px;font-size:16px;background:#fff;color:#111827}
+select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.bonus-card{margin-top:12px;border:1px solid #fde68a;background:linear-gradient(135deg,#fffbeb,#fff);}
+.bonus-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
+.bonus-pill{display:inline-block;padding:6px 9px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:11px;font-weight:800}
+.bonus-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bonus-kpi{padding:13px;border-radius:13px;background:#fff;border:1px solid #fde68a;min-width:0}
+.bonus-kpi span{display:block;font-size:11px;color:var(--muted)}
+.bonus-kpi strong{display:block;margin-top:5px;font-size:21px;overflow-wrap:anywhere}
+.bonus-note{margin-top:11px;padding:12px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;font-size:13px;line-height:1.5}
+.bonus-note.good-note{background:#f0fdf4;border-color:#bbf7d0}
+.bonus-warning{margin-top:10px;padding:11px;border-radius:11px;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;font-size:12px;line-height:1.45;font-weight:700}
+
 /* iPhone 13 ve dar mobil ekran optimizasyonu */
 html,body{max-width:100%;overflow-x:hidden}
 body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -110,7 +124,7 @@ input,button{max-width:100%}
     font-size:12px;
     margin-bottom:5px
   }
-  input{
+  input,select{
     height:44px;
     font-size:16px;
     border-radius:10px;
@@ -156,17 +170,17 @@ input,button{max-width:100%}
   }
   .meta span{margin:0}
 
-  .kpis{
+  .kpis,.bonus-kpis{
     grid-template-columns:1fr;
     gap:8px;
     margin-top:12px
   }
-  .kpi{
+  .kpi,.bonus-kpi{
     padding:11px;
     border-radius:12px
   }
-  .kpi span{font-size:11px}
-  .kpi strong{
+  .kpi span,.bonus-kpi span{font-size:11px}
+  .kpi strong,.bonus-kpi strong{
     font-size:20px;
     margin-top:4px
   }
@@ -192,6 +206,10 @@ input,button{max-width:100%}
     font-size:12px;
     line-height:1.35
   }
+
+  .bonus-head{display:block}
+  .bonus-pill{margin-top:7px}
+  .bonus-note,.bonus-warning{font-size:12px}
 
   .info{
     font-size:12px;
@@ -236,6 +254,8 @@ input,button{max-width:100%}
   td:nth-child(3)::before{content:"Kalan: ";color:var(--muted);display:block;font-size:10px;margin-bottom:2px}
   td:nth-child(4)::before{content:"Günlük: ";color:var(--muted);display:block;font-size:10px;margin-bottom:2px}
   td:nth-child(4){grid-column:1/-1}
+  td:nth-child(5)::before{content:"Prim çarpanı: ";color:var(--muted);display:block;font-size:10px;margin-bottom:2px}
+  td:nth-child(6)::before{content:"Seviye primi: ";color:var(--muted);display:block;font-size:10px;margin-bottom:2px}
   .badge{
     min-width:44px;
     font-size:11px;
@@ -261,7 +281,7 @@ input,button{max-width:100%}
 <div class="wrap">
   <div class="hero">
     <h1>Personel Hedef Takip Hesaplayıcı</h1>
-    <p>Mağaza hedefini çalışan sayısına bölerek kişi başı hedefinizi hesaplayın. Kendi satışınızın bu hedefin ne kadarını tamamladığını ve kalan günlerde günlük ne kadar satış gerektiğini görün.</p>
+    <p>Mağaza hedefini çalışan sayısına bölerek kişi başı hedefinizi hesaplayın. Kişisel hedefinizi, günlük satış ihtiyacınızı ve firmanın aktif prim çarpanlarına göre kazanabileceğiniz tahmini primi görün.</p>
   </div>
 
   <div class="grid">
@@ -289,6 +309,22 @@ input,button{max-width:100%}
         <div class="inputbox">
           <input id="personalSales" inputmode="decimal" type="number" min="0" step="1000" value="450000">
           <span class="suffix">₺</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="position">Pozisyon</label>
+        <select id="position">
+          <option value="sales">Satış Danışmanı / Uzman Satış Danışmanı</option>
+          <option value="assistant">Mağaza Müdür Yardımcısı</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="storeRate">Mağaza hedef gerçekleşme oranı</label>
+        <div class="inputbox">
+          <input id="storeRate" inputmode="decimal" type="number" min="0" max="300" step="0.1" value="100">
+          <span class="suffix">%</span>
         </div>
       </div>
 
@@ -401,8 +437,36 @@ input,button{max-width:100%}
         </div>
       </div>
 
+      <div class="card bonus-card">
+        <div class="bonus-head">
+          <div>
+            <h2 style="margin-bottom:5px">Prim Hesaplama</h2>
+            <div class="small" style="margin:0">Prim = kişisel satış cirosu × aktif prim çarpanı</div>
+          </div>
+          <span id="bonusEligibility" class="bonus-pill">Kontrol ediliyor</span>
+        </div>
+
+        <div class="bonus-kpis">
+          <div class="bonus-kpi">
+            <span>Aktif prim çarpanı</span>
+            <strong id="bonusMultiplier">%0,00</strong>
+          </div>
+          <div class="bonus-kpi">
+            <span>Şu anki tahmini prim</span>
+            <strong id="currentBonus">₺0</strong>
+          </div>
+          <div class="bonus-kpi">
+            <span>Bir sonraki prim seviyesi</span>
+            <strong id="nextBonusLevel">—</strong>
+          </div>
+        </div>
+
+        <div id="bonusInsight" class="bonus-note">Prim bilgileri hesaplanıyor.</div>
+        <div class="bonus-warning">Mağaza gerçekleşmesi %80'in altındaysa bireysel hedef oranı ne olursa olsun prim kazanımı oluşmaz. İade, barter çek ve hediye kartı gibi satışlar firmanın net ciro kurallarına göre manuel olarak satış tutarından düşülmelidir.</div>
+      </div>
+
       <div class="card levels">
-        <h2>Kişisel Hedef Seviyeleri</h2>
+        <h2>Kişisel Hedef ve Prim Seviyeleri</h2>
 
         <div class="table-wrap">
           <table>
@@ -412,6 +476,8 @@ input,button{max-width:100%}
                 <th>Gerekli kişisel satış</th>
                 <th>Bu seviyeye kalan</th>
                 <th>Kalan gün başına</th>
+                <th>Prim çarpanı</th>
+                <th>Seviye primi</th>
               </tr>
             </thead>
             <tbody id="levelsBody"></tbody>
@@ -464,15 +530,17 @@ input,button{max-width:100%}
         staffCount: byId('staffCount').value,
         personalSales: byId('personalSales').value,
         daysInMonth: byId('daysInMonth').value,
-        elapsedDays: byId('elapsedDays').value
+        elapsedDays: byId('elapsedDays').value,
+        position: byId('position').value,
+        storeRate: byId('storeRate').value
       };
-      localStorage.setItem('personelHedefTakipV6', JSON.stringify(data));
+      localStorage.setItem('personelHedefTakipV8', JSON.stringify(data));
     }catch(e){}
   }
 
   function load(){
     try{
-      var raw = localStorage.getItem('personelHedefTakipV6');
+      var raw = localStorage.getItem('personelHedefTakipV8');
       if(!raw) return;
       var data = JSON.parse(raw);
       for(var key in data){
@@ -481,12 +549,32 @@ input,button{max-width:100%}
     }catch(e){}
   }
 
+  function multiplierFor(rate, position){
+    if(rate < 80) return 0;
+    if(position === 'assistant'){
+      if(rate < 90) return 0.75;
+      if(rate < 100) return 1.25;
+      if(rate < 120) return 1.75;
+      return 2.00;
+    }
+    if(rate < 90) return 0.50;
+    if(rate < 100) return 1.00;
+    if(rate < 120) return 1.50;
+    return 2.00;
+  }
+
+  function percent2(n){
+    return '%' + Number(n || 0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
   function calculate(){
     var storeTarget = Math.max(0, valueOf('storeTarget', 0));
     var staffCount = Math.max(1, Math.floor(valueOf('staffCount', 1)));
     var sales = Math.max(0, valueOf('personalSales', 0));
     var totalDays = Math.max(1, Math.min(31, Math.floor(valueOf('daysInMonth', 30))));
     var elapsedDays = Math.max(0, Math.min(totalDays, Math.floor(valueOf('elapsedDays', 0))));
+    var position = byId('position').value || 'sales';
+    var storeRate = Math.max(0, valueOf('storeRate', 0));
 
 
     var personalTarget = storeTarget / staffCount;
@@ -579,6 +667,51 @@ input,button{max-width:100%}
         ' günde günlük ' + money(neededDaily) + ' satış gerekir.';
     }
 
+    var storeEligible = storeRate >= 80;
+    var activeMultiplier = storeEligible ? multiplierFor(completionRate, position) : 0;
+    var currentBonus = sales * activeMultiplier / 100;
+    var eligibility = byId('bonusEligibility');
+    var bonusInsight = byId('bonusInsight');
+
+    byId('bonusMultiplier').textContent = percent2(activeMultiplier);
+    byId('currentBonus').textContent = money(currentBonus);
+
+    var nextThresholds = [80,90,100,120];
+    var nextRate = null;
+    for(var nt=0; nt<nextThresholds.length; nt++){
+      if(completionRate < nextThresholds[nt]){ nextRate = nextThresholds[nt]; break; }
+    }
+
+    if(!storeEligible){
+      eligibility.textContent = 'Prim hakkı yok';
+      eligibility.className = 'bonus-pill bad';
+      byId('nextBonusLevel').textContent = 'Mağaza %80';
+      bonusInsight.className = 'bonus-note';
+      bonusInsight.textContent = 'Mağaza hedef gerçekleşmesi %' + numberTR(storeRate) + '. Prim kazanımı için mağazanın en az %80 hedef gerçekleştirmesi gerekir.';
+    }else if(activeMultiplier <= 0){
+      eligibility.textContent = 'Bireysel %80 bekleniyor';
+      eligibility.className = 'bonus-pill warn';
+      byId('nextBonusLevel').textContent = '%80';
+      var amount80 = personalTarget * 0.80;
+      bonusInsight.className = 'bonus-note';
+      bonusInsight.textContent = '%80 bireysel seviyeye ulaşmak için ' + money(Math.max(0,amount80-sales)) + ' satış kaldı. Bu seviyede tahmini prim ' + money(amount80 * multiplierFor(80,position) / 100) + ' olur.';
+    }else{
+      eligibility.textContent = 'Prim hakkı oluştu';
+      eligibility.className = 'bonus-pill good';
+      if(nextRate === null){
+        byId('nextBonusLevel').textContent = 'En üst seviye';
+        bonusInsight.className = 'bonus-note good-note';
+        bonusInsight.textContent = '%120 ve üzeri seviyedesin. Mevcut satış üzerinden tahmini primin ' + money(currentBonus) + '.';
+      }else{
+        byId('nextBonusLevel').textContent = '%' + nextRate;
+        var nextAmount = personalTarget * nextRate / 100;
+        var nextMultiplier = multiplierFor(nextRate,position);
+        var nextBonus = nextAmount * nextMultiplier / 100;
+        bonusInsight.className = 'bonus-note good-note';
+        bonusInsight.textContent = '%' + nextRate + ' seviyesine ulaşmak için ' + money(Math.max(0,nextAmount-sales)) + ' satış kaldı. O seviyede tahmini prim ' + money(nextBonus) + '; mevcut tahmini primine göre ' + money(Math.max(0,nextBonus-currentBonus)) + ' daha fazla olur.';
+      }
+    }
+
     var levels = [80, 90, 100, 110, 120];
     var rows = '';
 
@@ -600,6 +733,8 @@ input,button{max-width:100%}
           '<td>' + money(threshold) + '</td>' +
           '<td>' + (reached ? 'Tamamlandı' : money(levelRemaining)) + '</td>' +
           '<td>' + (reached ? '—' : money(levelDaily)) + '</td>' +
+          '<td>' + percent2(storeEligible ? multiplierFor(percent,position) : 0) + '</td>' +
+          '<td>' + (storeEligible ? money(threshold * multiplierFor(percent,position) / 100) : money(0)) + '</td>' +
         '</tr>';
     }
 
@@ -613,7 +748,9 @@ input,button{max-width:100%}
     byId('personalSales').value = 0;
     byId('daysInMonth').value = 30;
     byId('elapsedDays').value = 0;
-    try{ localStorage.removeItem('personelHedefTakipV6'); }catch(e){}
+    byId('position').value = 'sales';
+    byId('storeRate').value = 100;
+    try{ localStorage.removeItem('personelHedefTakipV8'); }catch(e){}
     calculate();
   }
 
@@ -663,6 +800,8 @@ input,button{max-width:100%}
 
   byId('storeTarget').onchange = calculate;
   byId('personalSales').onchange = calculate;
+  byId('storeRate').onchange = calculate;
+  byId('position').onchange = calculate;
 
   load();
   calculate();
