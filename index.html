@@ -382,6 +382,83 @@ html[data-theme="dark"] .bonus-badge{
   color:#fde68a!important
 }
 
+
+/* V11: Prim özet kartlarının beyaz kalma sorunu düzeltildi */
+html[data-theme="dark"] .bonus-kpis,
+html[data-theme="dark"] .bonus-grid,
+html[data-theme="dark"] .bonus-cards{
+  color:#f8fafc!important
+}
+
+html[data-theme="dark"] .bonus-kpi,
+html[data-theme="dark"] .bonus-metric,
+html[data-theme="dark"] .bonus-card,
+html[data-theme="dark"] .bonus-kpis .kpi,
+html[data-theme="dark"] .bonus-grid .kpi,
+html[data-theme="dark"] #bonusSection .kpi,
+html[data-theme="dark"] #bonusSection .bonus-card,
+html[data-theme="dark"] [class*="bonus"] .kpi{
+  background:#161d2b!important;
+  border-color:#8a6a13!important;
+  color:#f8fafc!important;
+  box-shadow:none!important
+}
+
+html[data-theme="dark"] .bonus-kpi span,
+html[data-theme="dark"] .bonus-metric span,
+html[data-theme="dark"] .bonus-card span,
+html[data-theme="dark"] .bonus-kpis .kpi span,
+html[data-theme="dark"] .bonus-grid .kpi span,
+html[data-theme="dark"] #bonusSection .kpi span,
+html[data-theme="dark"] [class*="bonus"] .kpi span{
+  color:#aeb8c8!important;
+  opacity:1!important
+}
+
+html[data-theme="dark"] .bonus-kpi strong,
+html[data-theme="dark"] .bonus-metric strong,
+html[data-theme="dark"] .bonus-card strong,
+html[data-theme="dark"] .bonus-kpis .kpi strong,
+html[data-theme="dark"] .bonus-grid .kpi strong,
+html[data-theme="dark"] #bonusSection .kpi strong,
+html[data-theme="dark"] [class*="bonus"] .kpi strong{
+  color:#ffffff!important;
+  opacity:1!important;
+  text-shadow:none!important
+}
+
+/* Inline veya açık renk atanmış olsa bile prim kartlarını zorla koyulaştır */
+html[data-theme="dark"] #bonusMultiplierCard,
+html[data-theme="dark"] #bonusAmountCard,
+html[data-theme="dark"] #nextBonusLevelCard,
+html[data-theme="dark"] [id*="bonus"][class*="kpi"],
+html[data-theme="dark"] [id*="Bonus"][class*="kpi"]{
+  background:#161d2b!important;
+  border-color:#8a6a13!important
+}
+
+html[data-theme="dark"] #bonusMultiplier,
+html[data-theme="dark"] #bonusAmount,
+html[data-theme="dark"] #nextBonusLevel,
+html[data-theme="dark"] #activeBonusMultiplier,
+html[data-theme="dark"] #estimatedBonus,
+html[data-theme="dark"] #nextLevel{
+  color:#ffffff!important;
+  opacity:1!important
+}
+
+/* Prim hakkı rozeti */
+html[data-theme="dark"] .bonus-status,
+html[data-theme="dark"] #bonusStatus{
+  background:#3b2f0b!important;
+  color:#fde68a!important;
+  border-color:#8a6a13!important
+}
+html[data-theme="dark"] .bonus-status *,
+html[data-theme="dark"] #bonusStatus *{
+  color:#fde68a!important
+}
+
 </style>
 </head>
 <body>

@@ -41,3 +41,9 @@ GitHub Pages:
 - Prim kartlarındaki açık renkli yazılar düzeltildi.
 - Sarı, yeşil ve kırmızı prim kutuları için yüksek kontrastlı karanlık tema renkleri eklendi.
 - Tahmini prim, aktif çarpan ve sonraki seviye değerleri karanlık modda net okunur hale getirildi.
+
+## V11 — Prim kartları karanlık tema düzeltmesi
+- Aktif prim çarpanı, tahmini prim ve sonraki prim seviyesi kartlarının beyaz arka planı kaldırıldı.
+- Kart arka planları karanlık temada koyu lacivert yapıldı.
+- Kart açıklamaları açık gri, sonuç değerleri beyaz yapıldı.
+- CSS seçicileri prim bölümündeki farklı kart sınıflarını da kapsayacak şekilde genişletildi.

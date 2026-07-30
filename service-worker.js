@@ -1,4 +1,4 @@
-const CACHE_NAME = 'personel-hedef-v10-pwa-1';
+const CACHE_NAME = 'personel-hedef-v11-pwa-1';
 const APP_FILES = [
   './',
   './index.html',
