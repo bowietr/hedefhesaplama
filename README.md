@@ -36,3 +36,8 @@ GitHub Pages:
 - Seçilen tema telefonda saklanır.
 - Uygulamanın kaç kez açıldığı ve önceki son açılış zamanı gösterilir.
 - Tema ve sayaç bilgileri Sıfırla işleminden etkilenmez.
+
+## V10 — Karanlık mod prim görünürlüğü
+- Prim kartlarındaki açık renkli yazılar düzeltildi.
+- Sarı, yeşil ve kırmızı prim kutuları için yüksek kontrastlı karanlık tema renkleri eklendi.
+- Tahmini prim, aktif çarpan ve sonraki seviye değerleri karanlık modda net okunur hale getirildi.
