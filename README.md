@@ -28,3 +28,11 @@ GitHub Pages:
 - Mağaza %80 prim koşulu eklendi.
 - Aktif çarpan ve tahmini prim hesaplaması eklendi.
 - Hedef seviyelerinde prim karşılıkları gösterildi.
+
+## V9 — Tema ve kullanım sayacı
+- Hesapla butonu kaldırıldı; girişler değiştikçe hesaplama otomatik yapılır.
+- Sıfırla butonu korunmuştur.
+- Aydınlık ve karanlık tema arasında geçiş eklenmiştir.
+- Seçilen tema telefonda saklanır.
+- Uygulamanın kaç kez açıldığı ve önceki son açılış zamanı gösterilir.
+- Tema ve sayaç bilgileri Sıfırla işleminden etkilenmez.
